@@ -1,0 +1,35 @@
+<h1>Propeller company</h1>
+<h3>Welcome to Propeller website, choose your favorite product</h3>
+
+
+<div class="filterOptions">
+    <mat-form-field appearance="fill" color="primary">
+        <mat-label>Select an option</mat-label>
+        <mat-select [formControl]="sortValue">
+        <mat-option value="" disabled>None</mat-option>
+          <mat-option value="lowest">Lowest price</mat-option>
+          <mat-option value="highest">Highest price</mat-option>
+          <mat-option value="ASC">By name ascending</mat-option>
+          <mat-option value="DESC">By name descending</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" >
+        <mat-label for="filter">Search your product</mat-label>
+        <input matInput placeholder="Search" [formControl]="filterValue" id="filter">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    
+    
+      <button mat-stroked-button (click)="resetFilters()" color="primary" >Reset filters</button>
+</div>
+
+<ng-container *ngIf="allProducts.length === 0;else haveProducts" >
+  <mat-spinner color="warn" ></mat-spinner>
+</ng-container>
+
+<ng-template #haveProducts>
+<div  class="containerCards">
+    <app-product-card *ngFor="let product of allProducts" [product]="product"></app-product-card>
+</div>
+</ng-template>

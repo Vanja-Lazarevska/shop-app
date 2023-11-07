@@ -1,0 +1,28 @@
+h1, h3 {
+    text-align: center;
+}
+
+.containerCards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items:center;
+    margin:0 3% 0
+}
+
+.filterOptions{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5%;
+}
+
+mat-form-field {
+    width: 22rem;
+}
+
+mat-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}

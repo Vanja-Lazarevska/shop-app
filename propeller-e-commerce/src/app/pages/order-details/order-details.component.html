@@ -1,0 +1,51 @@
+<table mat-table [dataSource]="orderedData" class="mat-elevation-z8 table " *ngIf="orderedData.length;else noOrders">
+
+    <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let product index as i"> {{i + 1}} </td>
+        <td mat-footer-cell *matFooterCellDef> Total </td>
+
+      </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let product"> {{product.productVariant.name}} </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="quantity"  >
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let product"> {{product.quantity}}</td>
+        <td mat-footer-cell *matFooterCellDef></td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price  </th>
+      <td mat-cell *matCellDef="let product"> {{product.productVariant.price}} </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="total price">
+        <th mat-header-cell *matHeaderCellDef> Total per product</th>
+        <td mat-cell *matCellDef="let product"> {{calculatePricePerProduct(product) | currency: 'USD'}} </td>
+        <td mat-footer-cell *matFooterCellDef> {{ calculcateTotal() | currency}} </td>
+
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+  </table>
+
+
+<ng-template #noOrders>
+    <div class="noContent">
+        <h2>No products ordered, go to products page and order your favorite.</h2>
+        <img src="../../../assets/images/empty-bag.png" width="150wv">
+    </div>
+
+</ng-template>

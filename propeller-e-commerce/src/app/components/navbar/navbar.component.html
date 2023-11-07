@@ -1,0 +1,10 @@
+<mat-toolbar >
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/">
+        <mat-icon>home</mat-icon>
+    </button>
+    <span>Propeller</span>
+    <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/orders" >
+      <mat-icon [matBadge]="order" aria-hidden="false">shopping_cart</mat-icon>
+      </button>
+  </mat-toolbar>

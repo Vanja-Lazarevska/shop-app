@@ -1,0 +1,43 @@
+<div class="container">
+        <div class="leftColumn">
+            <h1>{{singleProduct.name}}</h1>
+            <img [src]="singleProduct.featuredAsset.source"  >
+        </div>
+        <div class="rightColumn">
+            <h3>{{singleProduct.description}}</h3>
+            <p>Slug: {{singleProduct.slug}}</p>
+            <h3>Select other options of this product:</h3>
+            
+            <mat-accordion *ngFor="let variant of singleProduct.variants; index as i">
+              <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{variant.sku}}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                      {{variant.name}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>Price: {{variant.price}}</p>
+                <p>Price with tax: {{variant.priceWithTax}}</p>
+                <p>Aveable: {{variant.stockLevel}}</p>
+                <div class="orderDetails">
+                  <mat-form-field 
+                  >
+                  <input
+                      matInput 
+                      type="number"
+                      [formControl]="quantity"
+                      min="0"
+                  />
+                  </mat-form-field>
+                  <button mat-button (click)="handleOrder(variant.id)">Order</button>
+                </div>
+                
+              </mat-expansion-panel>
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+              </mat-expansion-panel>
+            </mat-accordion>
+            </div>
+</div>

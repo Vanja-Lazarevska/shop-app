@@ -1,0 +1,21 @@
+table {
+    background-color: #a99985;
+    min-width: 70%;
+    min-height: fit-content;
+    position: fixed; 
+    left: 15%;
+    margin-top: 2%;
+
+}
+
+  tr.mat-mdc-footer-row td {
+    font-weight: bold;
+  }
+
+
+.noContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+  }
